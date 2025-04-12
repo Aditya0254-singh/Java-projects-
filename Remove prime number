@@ -1,0 +1,34 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class RemovePrimes {
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+
+            }
+        }
+        return  true;
+    }
+
+    public static void main(String[]args){
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Integer> numbers =new ArrayList<>();
+
+        System.out.println("Enter the number of elements you want to add to the list:");
+        int n = sc.nextInt();
+
+        System.out.println("Enter " + n + " integers:");
+        for (int i = 0; i <n ; i++) {
+            numbers.add(sc.nextInt());
+
+        }
+
+        numbers.removeIf(RemovePrimes::isPrime);
+        System.out.println("ArrayList after removing the prime numbers:" + numbers);
+    }
+}
